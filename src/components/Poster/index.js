@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
 import Header from '~/components/Header';
-import LinearGradiente from 'react-native-linear-gradient';
 import api, { key } from '~/services/api';
 import {
   Container,
+  ContainerPoster,
   PosterImage,
   GenresView,
-  GenresText
+  GenresText,
+  ContainerGradiente
 } from './styles';
 
 export default class Action extends Component {
@@ -30,9 +31,10 @@ export default class Action extends Component {
     return (
       <Container >
         <Header />
-        <LinearGradiente colors={['#4c669f', '#3b5998', '#192f6a']}>
-          <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.state.poster.poster_path }} />
-        </LinearGradiente>
+        <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.state.poster.poster_path }} />
+        <ContainerGradiente>
+          <ContainerPoster />
+        </ContainerGradiente>
         <GenresView>
           {this.state.genres.map(item => (
             <GenresText>{item.name} </GenresText>

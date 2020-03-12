@@ -23,7 +23,7 @@ export default function Main() {
       <ScrollView>
         <ContentView>
           <Poster/>
-          <Popular />
+          <Popular/>
           <Action />
           <Aventure />
           <Animation />
