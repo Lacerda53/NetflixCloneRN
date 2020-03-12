@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Header from '~/components/Header';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -8,14 +9,20 @@ import {
   PosterImage,
   GenresView,
   GenresText,
-  ContainerGradiente
+  ContainerGradiente,
+  ButtonPLay,
+  ButtonPLayText,
+  OptionsContainer,
+  ButtonMyList,
+  ButtonInfo,
+  ButtonDescri
 } from './styles';
 
 export default class Action extends Component {
   state = {
     poster: {},
     isLoading: false,
-    movie: 495764,
+    movie: 581600,
     genres: []
   }
   async componentDidMount() {
@@ -31,15 +38,31 @@ export default class Action extends Component {
     return (
       <Container >
         <Header />
-        <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.state.poster.poster_path }} />
-        <ContainerGradiente>
-          <ContainerPoster />
-        </ContainerGradiente>
-        <GenresView>
-          {this.state.genres.map(item => (
-            <GenresText>{item.name} </GenresText>
-          ))}
-        </GenresView>
+        <TouchableOpacity>
+          <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + this.state.poster.poster_path }} />
+          <ContainerGradiente>
+            <ContainerPoster />
+          </ContainerGradiente>
+          <GenresView>
+            {this.state.genres.map(item => (
+              <GenresText>{item.name} </GenresText>
+            ))}
+          </GenresView>
+        </TouchableOpacity>
+        <OptionsContainer>
+          <ButtonMyList>
+            <Icon name="plus" size={20} color="#fff"/>
+            <ButtonDescri>Minha Lista</ButtonDescri>
+          </ButtonMyList>
+          <ButtonPLay>
+            <Icon name="play" size={20} />
+            <ButtonPLayText>Play</ButtonPLayText>
+          </ButtonPLay>
+          <ButtonInfo>
+            <Icon name="info" size={20} color="#fff"/>
+            <ButtonDescri>Info</ButtonDescri>
+          </ButtonInfo>
+        </OptionsContainer>
       </Container>
     );
   }

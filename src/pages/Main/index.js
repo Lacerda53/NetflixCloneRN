@@ -24,9 +24,9 @@ export default function Main() {
         <ContentView>
           <Poster/>
           <Popular/>
-          <Action />
-          <Aventure />
-          <Animation />
+          <Comedy />
+          <Crime />
+          <Drama />
           {/* <Comedy />
           <Crime />
           <Documentary />

@@ -20,15 +20,49 @@ export const ContainerGradiente = styled(LinearGradient).attrs({
 
 export const GenresView = styled.View`
   flex-direction: row;
-  justify-content: center
+  justify-content: center;
 `;
 
 export const GenresText = styled.Text`
   color: #fff;
-  margin-top:-50px;
+  margin-top:-100px;
   font-size: 12px;
 `;
 
+export const OptionsContainer = styled.View`
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: -25px;
+  top: -50px;
+`;
+
+export const ButtonMyList = styled.TouchableOpacity`
+  align-items: center;
+`;
+
+export const ButtonInfo = styled.TouchableOpacity`
+  align-items: center;
+`;
+
+export const ButtonDescri = styled.Text`
+  color: #fff;
+`;
+
+export const ButtonPLay = styled.TouchableOpacity`
+  flex-direction: row;
+  height: 35px;
+  width: 90px;
+  background-color: #fff;
+  justify-content: space-between;
+  padding:16px;
+  align-items: center;
+  border-radius: 3px;
+`;
+
+export const ButtonPLayText = styled.Text`
+  font-size: 17px;
+`;
 
 export const PosterImage = styled.Image`
   width: 100%;
