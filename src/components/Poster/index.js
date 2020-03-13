@@ -40,7 +40,7 @@ export default class Action extends Component {
     return (
       <Container >
         <Header />
-        <TouchableOpacity onPress={() => {useNavigation.navigate('Details')}}>
+        <TouchableOpacity onPress={() => {this.props.navigation.navigate('Details')}}>
           <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + this.state.poster.poster_path }} />
           <ContainerGradiente>
             <ContainerPoster />
