@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Header from '~/components/Header';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -15,6 +16,7 @@ import {
   OptionsContainer,
   ButtonMyList,
   ButtonInfo,
+  PlayContainer,
   ButtonDescri
 } from './styles';
 
@@ -38,7 +40,7 @@ export default class Action extends Component {
     return (
       <Container >
         <Header />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {useNavigation.navigate('Details')}}>
           <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + this.state.poster.poster_path }} />
           <ContainerGradiente>
             <ContainerPoster />
@@ -49,17 +51,19 @@ export default class Action extends Component {
             ))}
           </GenresView>
         </TouchableOpacity>
-        <OptionsContainer>
-          <ButtonMyList>
-            <Icon name="plus" size={20} color="#fff"/>
-            <ButtonDescri>Minha Lista</ButtonDescri>
-          </ButtonMyList>
+        <PlayContainer>
           <ButtonPLay>
             <Icon name="play" size={20} />
-            <ButtonPLayText>Play</ButtonPLayText>
+            <ButtonPLayText>Assistir</ButtonPLayText>
           </ButtonPLay>
+        </PlayContainer>
+        <OptionsContainer>
+          <ButtonMyList>
+            <Icon name="plus" size={20} color="#fff" />
+            <ButtonDescri>Minha Lista</ButtonDescri>
+          </ButtonMyList>
           <ButtonInfo>
-            <Icon name="info" size={20} color="#fff"/>
+            <Icon name="info" size={20} color="#fff" />
             <ButtonDescri>Info</ButtonDescri>
           </ButtonInfo>
         </OptionsContainer>

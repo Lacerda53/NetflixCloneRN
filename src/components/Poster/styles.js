@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const Container = styled.View`
-  flex: 1;
+  height: 600px;
 `;
 
 export const ContainerPoster = styled.View`
@@ -30,19 +30,25 @@ export const GenresText = styled.Text`
 `;
 
 export const OptionsContainer = styled.View`
-  align-items: center;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin-left: -25px;
+  justify-content: space-between;
+  top: -90px;
+`;
+
+export const PlayContainer = styled.View`
+  justify-content: center;
+  align-items: center;
   top: -50px;
 `;
 
 export const ButtonMyList = styled.TouchableOpacity`
   align-items: center;
+  left: 20px;
 `;
 
 export const ButtonInfo = styled.TouchableOpacity`
   align-items: center;
+  right: 40px;
 `;
 
 export const ButtonDescri = styled.Text`
@@ -52,10 +58,10 @@ export const ButtonDescri = styled.Text`
 export const ButtonPLay = styled.TouchableOpacity`
   flex-direction: row;
   height: 35px;
-  width: 90px;
+  width: 100px;
   background-color: #fff;
   justify-content: space-between;
-  padding:16px;
+  padding: 11px;
   align-items: center;
   border-radius: 3px;
 `;

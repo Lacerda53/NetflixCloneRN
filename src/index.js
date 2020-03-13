@@ -1,9 +1,13 @@
 import React from 'react';
-
+import { NavigationContainer } from '@react-navigation/native';
 import '~/config/ReactotronConfig';
 
 import Routes from '~/routes';
 
-const App = () => <Routes />;
-
-export default App;
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
+  );
+}
