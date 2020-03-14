@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Button } from 'react-native';
 import Header from '~/components/Header';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -20,7 +19,8 @@ import {
   ButtonDescri
 } from './styles';
 
-export default class Action extends Component {
+export default class Poster extends Component {
+
   state = {
     poster: {},
     isLoading: false,
@@ -35,12 +35,13 @@ export default class Action extends Component {
     const response = await api.get(`movie/${this.state.movie}?api_key=${key}&language=pt-BR`);
     const result = await response.data;
     this.setState({ poster: result, isLoading: false, genres: result.genres });
-  }
+  };
   render() {
+    const navigation = this.props.navigation;
     return (
       <Container >
         <Header />
-        <TouchableOpacity onPress={() => {this.props.navigation.navigate('Details')}}>
+        <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
           <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + this.state.poster.poster_path }} />
           <ContainerGradiente>
             <ContainerPoster />

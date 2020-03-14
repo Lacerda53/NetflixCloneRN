@@ -17,7 +17,7 @@ export default class Main extends Component {
         <StatusBar translucent backgroundColor="transparent" />
         <ScrollView>
           <ContentView>
-            <Poster />
+            <Poster/>
             <Popular />
             <Comedy />
             <Crime />

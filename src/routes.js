@@ -9,7 +9,7 @@ import Details from './pages/Details';
 export default function Routes() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Main" component={Main} options={{headerShown: false}} />
+      <Stack.Screen name="Main" component={Main} />
       <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );

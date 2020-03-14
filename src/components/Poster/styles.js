@@ -72,7 +72,7 @@ export const ButtonPLayText = styled.Text`
 
 export const PosterImage = styled.Image`
   width: 100%;
-  height: 600px;
+  height: 100%;
   left: 0;
   top: 0;
   right: 0;
