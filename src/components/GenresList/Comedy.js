@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, ActivityIndicator } from 'react-native';
+import { FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -9,24 +10,27 @@ import {
   TitleText
 } from './styles';
 
-export default function Popular() {
+export default function Comedy() {
+
   const [capa, setCapa] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [genero] = useState('35');
+  const { navigate } = useNavigation();
 
   useEffect(() => {
-    this.loadPopular();
-  },[]);
+    this.loadComedy();
+  }, [])
 
-  loadPopular = async () => {
+  loadComedy = async () => {
     setIsLoading(true);
-    const response = await api.get(`/movie/popular?api_key=${key}&language=pt-BR&page=1`);
+    const response = await api.get(`discover/movie?api_key=${key}&sort_by=popularity.desc&page=1&with_genres=${genero}`);
     const result = await response.data;
     setCapa(result.results);
     setIsLoading(false);
   }
   return (
     <Container >
-      <TitleText>Em alta</TitleText>
+      <TitleText>Comédia</TitleText>
       {isLoading ?
         <ActivityIndicator style={{ flex: 1 }} size="large" color="#ec0007" animating={isLoading} />
         :
@@ -36,9 +40,11 @@ export default function Popular() {
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={() => <ItemSeparation />}
           renderItem={({ item }) =>
-            <CapaContainer>
-              <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
-            </CapaContainer>
+            <TouchableOpacity onPress={() => navigate("Details", { id: item.id })}>
+              <CapaContainer>
+                <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
+              </CapaContainer>
+            </TouchableOpacity>
           }
         />
       }

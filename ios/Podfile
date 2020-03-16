@@ -36,6 +36,14 @@ target 'netflixClone' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
+
+  pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
+
   target 'netflixCloneTests' do
     inherit! :search_paths
     # Pods for testing

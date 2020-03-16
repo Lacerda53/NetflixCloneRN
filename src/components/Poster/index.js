@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Header from '~/components/Header';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import IconAntDesign from 'react-native-vector-icons/AntDesign';
+import IconAwesome from 'react-native-vector-icons/FontAwesome';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -27,6 +28,7 @@ export default function Poster() {
   const [genres, setGenres] = useState([]);
 
   const {navigate} = useNavigation();
+
   useEffect(() => {
     this.loadAction();
   }, [])
@@ -40,7 +42,7 @@ export default function Poster() {
   return (
     <Container >
       <Header />
-      <TouchableOpacity onPress={() => navigate('Details') }>
+      <TouchableOpacity onPress={() => navigate('Details',{ id: movie}) }>
         <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + poster.poster_path }} />
         <ContainerGradiente>
           <ContainerPoster />
@@ -53,17 +55,17 @@ export default function Poster() {
       </TouchableOpacity>
       <PlayContainer>
         <ButtonPLay>
-          <Icon name="play" size={20} />
+          <IconAwesome name="play" size={20} />
           <ButtonPLayText>Assistir</ButtonPLayText>
         </ButtonPLay>
       </PlayContainer>
       <OptionsContainer>
         <ButtonMyList>
-          <Icon name="plus" size={20} color="#fff" />
+          <IconAntDesign name="plus" size={20} color="#fff" />
           <ButtonDescri>Minha Lista</ButtonDescri>
         </ButtonMyList>
         <ButtonInfo>
-          <Icon name="info" size={20} color="#fff" />
+          <IconAntDesign name="infocirlceo" size={20} color="#fff" />
           <ButtonDescri>Info</ButtonDescri>
         </ButtonInfo>
       </OptionsContainer>

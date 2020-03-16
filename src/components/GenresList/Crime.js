@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, ActivityIndicator } from 'react-native';
+import { FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import api, { key } from '~/services/api';
 import {
   Container,
@@ -13,6 +14,7 @@ export default function Crime() {
   const [capa, setCapa] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [genero] = useState('80');
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     this.loadCrime();
@@ -37,9 +39,11 @@ export default function Crime() {
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={() => <ItemSeparation />}
           renderItem={({ item }) =>
-            <CapaContainer>
-              <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
-            </CapaContainer>
+            <TouchableOpacity onPress={() => navigate("Details", { id: item.id })}>
+              <CapaContainer>
+                <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
+              </CapaContainer>
+            </TouchableOpacity>
           }
         />
       }
