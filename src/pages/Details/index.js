@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {useNavigation} from '@react-navigation/native';
+import env from 'react-native-config';
 import { TouchableOpacity, ActivityIndicator, View, ScrollView } from 'react-native';
-import api, { key } from '~/services/api';
+import api from '~/services/api';
 import {
   Container,
   HeaderMovie,
@@ -25,6 +26,7 @@ import {
 export default function Details({ route }) {
   const { id } = route.params;
   const {navigate} = useNavigation();
+  const API_CHAVE = env.API_CHAVE;
   const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(false);
 
@@ -34,7 +36,7 @@ export default function Details({ route }) {
 
   loadDetails = async () => {
     setLoading(true);
-    const response = await api.get(`movie/${id}?api_key=${key}&language=pt-BR`);
+    const response = await api.get(`movie/${id}?api_key=${API_CHAVE}&language=pt-BR`);
     const result = await response.data;
     setData(result);
     setLoading(false);

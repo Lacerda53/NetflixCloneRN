@@ -6,7 +6,8 @@ import {
   Dimensions,
   ActivityIndicator
 } from 'react-native';
-import api, {key} from '~/services/api';
+import api from '~/services/api';
+import env from 'react-native-config';
 import YouTube from 'react-native-youtube';
 
 export default function ReactNativeYouTubeExample({ route }) {
@@ -21,6 +22,7 @@ export default function ReactNativeYouTubeExample({ route }) {
   const [isLoading, setIsLoading] = useState(false);
   const [keyMovie, setKeyMovie] = useState('');
   const [playerWidth] = useState(Dimensions.get('window').width);
+  const API_CHAVE = env.API_CHAVE;
 
    useEffect(() => {
      this.findTrailer();
@@ -28,7 +30,7 @@ export default function ReactNativeYouTubeExample({ route }) {
 
   findTrailer = async () => {
     setIsLoading(true);
-    const response = await api.get(`movie/${id}/videos?api_key=${key}`);
+    const response = await api.get(`movie/${id}/videos?api_key=${API_CHAVE}`);
     const result = await response.data;
     const first = result.results[0].key;
     setKeyMovie(first);

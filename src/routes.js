@@ -22,7 +22,9 @@ export default function Routes() {
         }} />
       <Stack.Screen name="Player" component={Player}
         options={{
-          headerShown: false
+          headerTransparent: true,
+          headerTintColor: '#fff',
+          title: ''
         }} />
     </Stack.Navigator>
   );

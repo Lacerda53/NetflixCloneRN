@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import api, { key } from '~/services/api';
+import env from 'react-native-config';
+import api from '~/services/api';
 import {
   Container,
   CapaImage,
@@ -14,6 +15,7 @@ export default function Popular() {
   const [capa, setCapa] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { navigate } = useNavigation();
+  const API_CHAVE = env.API_CHAVE;
 
   useEffect(() => {
     this.loadPopular();
@@ -21,7 +23,7 @@ export default function Popular() {
 
   loadPopular = async () => {
     setIsLoading(true);
-    const response = await api.get(`/movie/popular?api_key=${key}&language=pt-BR&page=1`);
+    const response = await api.get(`/movie/popular?api_key=${API_CHAVE}&language=pt-BR&page=1`);
     const result = await response.data;
     setCapa(result.results);
     setIsLoading(false);

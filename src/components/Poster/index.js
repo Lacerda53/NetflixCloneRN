@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Header from '~/components/Header';
+import env from 'react-native-config';
 import {useNavigation} from '@react-navigation/native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import IconAwesome from 'react-native-vector-icons/FontAwesome';
-import api, { key } from '~/services/api';
+import api from '~/services/api';
 import {
   Container,
   ContainerPoster,
@@ -26,7 +27,7 @@ export default function Poster() {
   const [poster, setPoster] = useState({});
   const [movie] = useState(581600);
   const [genres, setGenres] = useState([]);
-
+  const API_CHAVE = env.API_CHAVE;
   const {navigate} = useNavigation();
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Poster() {
   }, [])
 
   loadAction = async () => {
-    const response = await api.get(`movie/${movie}?api_key=${key}&language=pt-BR`);
+    const response = await api.get(`movie/${movie}?api_key=${API_CHAVE}&language=pt-BR`);
     const result = await response.data;
     setPoster(result);
     setGenres(result.genres);
@@ -49,7 +50,7 @@ export default function Poster() {
         </ContainerGradiente>
         <GenresView>
           {genres.map(item => (
-            <GenresText>{item.name} </GenresText>
+            <GenresText key={item.id}>{item.name} </GenresText>
           ))}
         </GenresView>
       </TouchableOpacity>

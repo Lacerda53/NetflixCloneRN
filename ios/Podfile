@@ -44,6 +44,8 @@ target 'netflixClone' do
 
   pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'netflixCloneTests' do
     inherit! :search_paths
     # Pods for testing

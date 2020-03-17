@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import api, { key } from '~/services/api';
+import env from 'react-native-config';
+import api from '~/services/api';
 import {
   Container,
   CapaImage,
@@ -15,6 +16,7 @@ export default function Crime() {
   const [isLoading, setIsLoading] = useState(false);
   const [genero] = useState('80');
   const { navigate } = useNavigation();
+  const API_CHAVE = env.API_CHAVE;
 
   useEffect(() => {
     this.loadCrime();
@@ -22,7 +24,7 @@ export default function Crime() {
 
   loadCrime = async () => {
     setIsLoading(true);
-    const response = await api.get(`discover/movie?api_key=${key}&sort_by=popularity.desc&page=1&with_genres=${genero}`);
+    const response = await api.get(`discover/movie?api_key=${API_CHAVE}&sort_by=popularity.desc&page=1&with_genres=${genero}`);
     const result = await response.data;
     setCapa(result.results);
     setIsLoading(false);
