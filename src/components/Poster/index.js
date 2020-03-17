@@ -54,7 +54,7 @@ export default function Poster() {
         </GenresView>
       </TouchableOpacity>
       <PlayContainer>
-        <ButtonPLay>
+        <ButtonPLay onPress={()=> navigate('Player', {id: movie})}>
           <IconAwesome name="play" size={20} />
           <ButtonPLayText>Assistir</ButtonPLayText>
         </ButtonPLay>
@@ -64,7 +64,7 @@ export default function Poster() {
           <IconAntDesign name="plus" size={20} color="#fff" />
           <ButtonDescri>Minha Lista</ButtonDescri>
         </ButtonMyList>
-        <ButtonInfo>
+        <ButtonInfo onPress={()=> navigate('Details', {id: movie})}>
           <IconAntDesign name="infocirlceo" size={20} color="#fff" />
           <ButtonDescri>Info</ButtonDescri>
         </ButtonInfo>

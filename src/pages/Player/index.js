@@ -19,18 +19,19 @@ export default function ReactNativeYouTubeExample({ route }) {
   const [duration, setduration] = useState(0);
   const [currentTime, setcurrentTime] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [keyMovie, setKeyMovie] = useState([]);
+  const [keyMovie, setKeyMovie] = useState('');
   const [playerWidth] = useState(Dimensions.get('window').width);
 
-  useEffect(() => {
-    this.findTrailer();
-  });
+   useEffect(() => {
+     this.findTrailer();
+   },[]);
 
   findTrailer = async () => {
     setIsLoading(true);
-    const response = await api.get(`movie/${id}/videos?api_key=${key}&language=pt-BR`);
+    const response = await api.get(`movie/${id}/videos?api_key=${key}`);
     const result = await response.data;
-    setKeyMovie(result.results[0]);
+    const first = result.results[0].key;
+    setKeyMovie(first);
     setIsLoading(false);
   }
   _youTubeRef = React.createRef();
@@ -38,12 +39,12 @@ export default function ReactNativeYouTubeExample({ route }) {
   return (
     <ScrollView style={styles.container}>
       {isLoading ?
-        <ActivityIndicator animating={isLoading} />
+        <ActivityIndicator style={{ flex: 1 }} size="large" color="#e50914" animating={isLoading} />
         :
         <YouTube
           ref={this._youTubeRef}
           apiKey="AIzaSyA8a-OZomUGRXLCQJbIgnPKiMo_GVsv_Eg"
-          videoId={keyMovie.key}
+          videoId={keyMovie}
           play={true}
           loop={false}
           fullscreen={true}
@@ -76,6 +77,7 @@ export default function ReactNativeYouTubeExample({ route }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
+    flex:1
   },
   player: {
     alignSelf: 'stretch',
