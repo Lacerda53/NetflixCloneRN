@@ -31,10 +31,10 @@ export default function Poster() {
   const {navigate} = useNavigation();
 
   useEffect(() => {
-    this.loadAction();
+    this.loadPoster();
   }, [])
 
-  loadAction = async () => {
+  loadPoster = async () => {
     const response = await api.get(`movie/${movie}?api_key=${API_CHAVE}&language=pt-BR`);
     const result = await response.data;
     setPoster(result);

@@ -11,18 +11,18 @@ import {
   TitleText
 } from './styles';
 
-export default function Drama() {
+export default function History() {
   const [capa, setCapa] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [genero] = useState('18');
+  const [genero] = useState('36');
   const API_CHAVE = env.API_CHAVE;
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    this.loadDrama();
+    this.loadHistory();
   }, [])
 
-  loadDrama = async () => {
+  loadHistory = async () => {
     setIsLoading(true);
     const response = await api.get(`discover/movie?api_key=${API_CHAVE}&sort_by=popularity.desc&page=1&with_genres=${genero}`);
     const result = await response.data;
@@ -31,7 +31,7 @@ export default function Drama() {
   }
   return (
     <Container >
-      <TitleText>Drama</TitleText>
+      <TitleText>História</TitleText>
       {isLoading ?
         <ActivityIndicator style={{ flex: 1 }} size="large" color="#ec0007" animating={isLoading} />
         :

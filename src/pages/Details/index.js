@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import env from 'react-native-config';
+import Similar from '~/components/Similar';
 import { TouchableOpacity, ActivityIndicator, View, ScrollView } from 'react-native';
 import api from '~/services/api';
 import {
@@ -47,7 +48,7 @@ export default function Details({ route }) {
         <ActivityIndicator style={{ flex: 1 }} size="large" color="#e50914" animating={isLoading} />
         :
         <ScrollView>
-          <View style={{height:'50%'}}>
+          <View style={{flex:1, backgroundColor: '#131313'}}>
             <TouchableOpacity onPress={()=> navigate('Player', {id: id})}>
               <MovieCapa source={{ uri: 'https://image.tmdb.org/t/p/original/' + data.backdrop_path }} />
               <ContainerGradiente>
@@ -86,6 +87,7 @@ export default function Details({ route }) {
               </ButtonAlign>
             </Body>
           </View>
+          <Similar movieId={id}/>
         </ScrollView>
       }
     </Container>

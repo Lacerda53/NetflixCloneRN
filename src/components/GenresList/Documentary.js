@@ -11,18 +11,18 @@ import {
   TitleText
 } from './styles';
 
-export default function Drama() {
+export default function Documentary() {
   const [capa, setCapa] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [genero] = useState('18');
-  const API_CHAVE = env.API_CHAVE;
+  const [genero] = useState('99');
   const { navigate } = useNavigation();
+  const API_CHAVE = env.API_CHAVE;
 
   useEffect(() => {
-    this.loadDrama();
+    this.loadDocumentary();
   }, [])
 
-  loadDrama = async () => {
+  loadDocumentary = async () => {
     setIsLoading(true);
     const response = await api.get(`discover/movie?api_key=${API_CHAVE}&sort_by=popularity.desc&page=1&with_genres=${genero}`);
     const result = await response.data;
@@ -31,7 +31,7 @@ export default function Drama() {
   }
   return (
     <Container >
-      <TitleText>Drama</TitleText>
+      <TitleText>Documentário</TitleText>
       {isLoading ?
         <ActivityIndicator style={{ flex: 1 }} size="large" color="#ec0007" animating={isLoading} />
         :
@@ -41,11 +41,11 @@ export default function Drama() {
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={() => <ItemSeparation />}
           renderItem={({ item }) =>
-          <TouchableOpacity onPress={()=> navigate("Details", {id: item.id})}>
-          <CapaContainer>
-            <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
-          </CapaContainer>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigate("Details", { id: item.id })}>
+              <CapaContainer>
+                <CapaImage source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} />
+              </CapaContainer>
+            </TouchableOpacity>
           }
         />
       }

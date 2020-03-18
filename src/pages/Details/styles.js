@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-Color: #131313;
+  background-Color: #000;
 `;
 
 export const HeaderMovie = styled.View`
