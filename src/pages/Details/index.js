@@ -87,7 +87,7 @@ export default function Details({ route }) {
               </ButtonAlign>
             </Body>
           </View>
-          <Similar movieId={id}/>
+          <Similar params={id}/>
         </ScrollView>
       }
     </Container>

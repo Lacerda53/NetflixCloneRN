@@ -26,11 +26,14 @@ export const AtiveText = styled.Text`
 `;
 
 export const CapaImage = styled.Image`
-  height: 160px;
-  width: 110px;
+  height: 175px;
+  width: 125px;
+`;
+
+export const ContainerSimilar = styled.View`
+  align-items: center;
 `;
 
 export const CapaContainer = styled.View`
-  flex: 1;
-  flex-direction: row;
+  padding: 4px;
 `;

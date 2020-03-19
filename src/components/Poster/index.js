@@ -43,7 +43,7 @@ export default function Poster() {
   return (
     <Container >
       <Header />
-      <TouchableOpacity onPress={() => navigate('Details',{ id: movie}) }>
+      <TouchableOpacity activeOpacity={1.0} onPress={() => navigate('Details',{ id: movie}) }>
         <PosterImage source={{ uri: 'https://image.tmdb.org/t/p/original/' + poster.poster_path }} />
         <ContainerGradiente>
           <ContainerPoster />
